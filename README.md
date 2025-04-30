@@ -1,4 +1,4 @@
-# Coffee Shop Dee Aksara 
+# Coffee Shop Dee Aksara P
 # Poster
 # Deskripsi Aplikasi
 Aplikasi Coffee Shop Dee Aksara adalah sistem penjualan kopi berbasis web yang dirancang untuk memudahkan pelanggan dalam melakukan pemesanan dan pembayaran secara online. Dengan memanfaatkan teknologi terkini seperti PHP, serta dukungan framework Boostrap, HTML, dan Java, aplikasi ini menyederhanakan proses transaksi pembayaran, pencatatan pesanan, dan pembuatan laporan. Sistem ini memiliki pengguna utama: 
