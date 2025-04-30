@@ -89,7 +89,7 @@ $result = $conn->query($query);
                 <td>Rp <?php echo number_format($row['kembalian'], 0, ',', '.'); ?></td>
                 <td><?php echo htmlspecialchars($row['status_pembayaran']); ?></td>
                 <td>
-                    <form method="POST" action="">
+                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <input type="hidden" name="kode_pesanan" value="<?php echo htmlspecialchars($row['kode_pesanan']); ?>">
                         <label for="jumlah_uang">Jumlah Uang:</label>
                         <input type="number" name="jumlah_uang" required>

@@ -1,219 +1,149 @@
 <?php
-
-
 $koneksi = mysqli_connect("localhost", "root", "", "pwl_kasir_restoran");
 
-
-// Funtion Register
-
-function register_akun()
-
-{
-
+// Fungsi Registrasi Akun
+function register_akun() {
     global $koneksi;
 
-
-
     $username = htmlspecialchars($_POST["username"]);
-
     $password = md5(htmlspecialchars($_POST["password"]));
+    $confirm_password = md5(htmlspecialchars($_POST["confirm_password"]));
+    $role = htmlspecialchars($_POST["role"]);
 
-    $konfirmasi_password = md5(htmlspecialchars($_POST["konfirmasi-password"]));
-
-
-
-    $cek_username = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM `user` WHERE username = '$username'"));
-
-
-
-    if ($cek_username != null) {
-
-        echo "<script>
-
-            alert('Username sudah ada!');
-
-        </script>";
-
-        return -1;
-    } else if ($password != $konfirmasi_password) {
-
-        echo "<script>
-
-            alert('Password Tidak Sesuai!');
-
-        </script>";
-
+    // Validasi kecocokan password
+    if ($password != $confirm_password) {
+        $_SESSION['error'] = "Password tidak cocok!";
         return -1;
     }
 
+    // Cek apakah username sudah ada di salah satu tabel
+    $check_user = mysqli_query($koneksi, "SELECT username FROM user WHERE username = '$username' 
+                                         UNION 
+                                         SELECT username FROM admin WHERE username = '$username'");
+    
+    if (mysqli_num_rows($check_user) > 0) {
+        $_SESSION['error'] = "Username sudah digunakan!";
+        return -1;
+    }
 
+    // Masukkan ke tabel yang sesuai berdasarkan role
+    if ($role == 'admin') {
+        $query = "INSERT INTO admin (username, password) VALUES ('$username', '$password')";
+    } else {
+        $query = "INSERT INTO user (username, password) VALUES ('$username', '$password')";
+    }
 
-    mysqli_query($koneksi, "INSERT INTO `user`
+    mysqli_query($koneksi, $query);
 
-                            VALUES ('', '$username', '$password')
-
-    ");
+    if (mysqli_error($koneksi)) {
+        $_SESSION['error'] = "Registrasi gagal: " . mysqli_error($koneksi);
+        return -1;
+    }
 
     return mysqli_affected_rows($koneksi);
 }
 
-
-
-// Function Login
-
-function login_akun()
-
-{
-
+// Fungsi Login Akun
+function login_akun() {
     global $koneksi;
 
-
-
     $username = htmlspecialchars($_POST["username"]);
-
     $password = md5(htmlspecialchars($_POST["password"]));
 
+    // Cek di tabel admin
+    $cek_admin = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM admin 
+                                                      WHERE username = '$username' AND 
+                                                            password = '$password'"));
 
+    // Cek di tabel user
+    $cek_user = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM user 
+                                                     WHERE username = '$username' AND 
+                                                           password = '$password'"));
 
-    $cek_akun_admin = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM `admin` 
+    if ($cek_admin == null && $cek_user == null) {
+        $_SESSION['error'] = "Username atau password salah!";
+        return false;
+    }
 
-                                                           WHERE username = '$username' AND 
-
-                                                                `password` = '$password'
-
-    "));
-
-    $cek_akun_user = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM `user` 
-
-                                                           WHERE username = '$username' AND 
-
-                                                                `password` = '$password'
-
-    "));
-
-
-
-    if ($cek_akun_admin == null && $cek_akun_user == null) return false;
-
-    if ($cek_akun_user != null) {
-
+    if ($cek_user != null) {
         $_SESSION["akun-user"] = [
-
             "username" => $username,
-
-            "password" => $password
-
+            "role" => "user"
         ];
     }
-    if ($cek_akun_admin != null) {
 
+    if ($cek_admin != null) {
         $_SESSION["akun-admin"] = [
-
             "username" => $username,
-
-            "password" => $password
-
+            "role" => "admin"
         ];
     }
 
     header("Location: index.php");
-
-    exit;
+    exit();
 }
 
-
-
-// Function Select Data
-
-function ambil_data($query)
-
-{
-
+// Fungsi Ambil Data
+function ambil_data($query) {
     global $koneksi;
 
-
-
-    $db = [];
-
-    $sql_query = mysqli_query($koneksi, $query);
-
-    while ($q = mysqli_fetch_assoc($sql_query)) {
-
-        array_push($db, $q);
+    $result = mysqli_query($koneksi, $query);
+    $data = [];
+    
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
     }
 
-    return $db;
+    return $data;
 }
-
-
 
 // Function Tambah Data
 
 function tambah_data_menu()
-
 {
-
     global $koneksi;
 
-
-
     $nama = htmlspecialchars($_POST["nama"]);
-
     $harga = (int) htmlspecialchars($_POST["harga"]);
-
-    $gambar = htmlspecialchars($_FILES["gambar"]["name"]);
-
+    $gambar = $_FILES["gambar"]["name"];
     $kategori = htmlspecialchars($_POST["kategori"]);
-
     $status = htmlspecialchars($_POST["status"]);
 
-
-
-    // Generate Kode Menu
-
-    $kode_menu = "MN" . ambil_data("SELECT MAX(SUBSTR(kode_menu, 3)) AS kode FROM menu")[0]["kode"] + 1;
-
-
-
-    // cek format gambar
-
-    $format_gambar = ["jpg", "jpeg", "png", "gif"];
-
-    $cek_gambar = explode(".", $gambar);
-
-    $cek_gambar = strtolower(end($cek_gambar));
-
-    if (!in_array($cek_gambar, $format_gambar)) {
-
-        echo "<script>
-
-            alert('File yang diupload bukan merupakan image!');
-
-        </script>";
-
+    if (!$nama || !$harga || !$gambar || !$kategori || !$status) {
+        echo "<script>alert('Form tidak lengkap');</script>";
         return -1;
     }
 
+    $format_gambar = ["jpg", "jpeg", "png", "gif"];
+    $cek_gambar = strtolower(pathinfo($gambar, PATHINFO_EXTENSION));
 
+    if (!in_array($cek_gambar, $format_gambar)) {
+        echo "<script>alert('File bukan gambar valid!');</script>";
+        return -1;
+    }
 
-    // upload file
     $nama_gambar = uniqid() . ".$cek_gambar";
-    move_uploaded_file($_FILES["gambar"]["tmp_name"], "src/img/$nama_gambar");
+    if (!move_uploaded_file($_FILES["gambar"]["tmp_name"], "src/img/$nama_gambar")) {
+        echo "<script>alert('Upload gambar gagal!');</script>";
+        return -1;
+    }
 
+    $max = ambil_data("SELECT MAX(SUBSTR(kode_menu, 3)) AS kode FROM menu")[0]["kode"];
+    $kode_angka = $max ? (int)$max + 1 : 1;
+    $kode_menu = "MN" . $kode_angka;
 
+    $query = "INSERT INTO menu (kode_menu, nama, harga, gambar, kategori, status)
+              VALUES ('$kode_menu', '$nama', $harga, '$nama_gambar', '$kategori', '$status')";
 
-    // eksekusi query insert
+    mysqli_query($koneksi, $query);
 
-    $id_menu = ambil_data("SELECT MAX(SUBSTR(kode_menu, 3)) AS kode FROM menu")[0]["kode"] + 1;
-
-    mysqli_query($koneksi, "INSERT INTO menu
-
-                            VALUES ($id_menu, '$kode_menu', '$nama', $harga, '$nama_gambar', '$kategori', '$status')
-
-    ");
+    if (mysqli_error($koneksi)) {
+        die("Query Error: " . mysqli_error($koneksi));
+    }
 
     return mysqli_affected_rows($koneksi);
 }
+
 
 
 

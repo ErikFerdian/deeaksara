@@ -15,7 +15,8 @@ if (!$transaksi || count($transaksi) == 0) {
 
 $total_bayar = $transaksi[0]["total_bayar"];
 $kembalian = $transaksi[0]["kembalian"];
-$metode_pembayaran = $transaksi[0]["metode_pembayaran"]; // Tambahkan metode pembayaran
+$metode_pembayaran = $transaksi[0]["metode_pembayaran"];
+
 // Ambil data pesanan
 $menu = ambil_data("SELECT DISTINCT pesanan.*, menu.nama, menu.harga FROM pesanan 
                     JOIN menu ON pesanan.kode_menu = menu.kode_menu 
@@ -67,6 +68,11 @@ foreach ($menu as $m) {
         .footer {
             font-size: 12px;
             margin-top: 10px;
+        }
+
+        /* Sembunyikan tombol cetak jika ada */
+        button.cetak, .btn-cetak, #btnCetak {
+            display: none !important;
         }
     </style>
 </head>

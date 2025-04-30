@@ -1,4 +1,5 @@
 <?php
+ob_start(); // Tambahkan baris ini sebagai baris pertama!
 session_start();
 require_once "function.php";
 
@@ -49,6 +50,138 @@ $total_item = array_sum(array_column($_SESSION['keranjang'] ?? [], 'quantity'));
     <link rel="stylesheet" href="./src/css/bootstrap-5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./src/css/bootstrap-icons-1.8.3/bootstrap-icons.css">
     <title>Beranda</title>
+    <style>
+        :root {
+            --dark-brown: #5D4037;
+            --medium-brown: #8D6E63;
+            --light-brown: #BCAAA4;
+            --cream: #EFEBE9;
+            --accent-brown: #D7CCC8;
+            --text-brown: #3E2723;
+        }
+        
+        body {
+            background-color: var(--cream);
+            color: var(--text-brown);
+        }
+        
+        .bg-dark {
+            background-color: var(--dark-brown) !important;
+        }
+        
+        .text-white {
+            color: white !important;
+        }
+        
+        .btn-outline-light {
+            border-color: var(--light-brown);
+            color: var(--light-brown);
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--light-brown);
+            color: white;
+        }
+        
+        .btn-danger {
+            background-color: #A44A3F;
+            border-color: #A44A3F;
+        }
+        
+        .btn-danger:hover {
+            background-color: #8B3A2F;
+        }
+        
+        #dropdown-menu {
+            background-color: var(--dark-brown);
+        }
+        
+        #dropdown-menu a {
+            color: white;
+        }
+        
+        #dropdown-menu a:hover {
+            background-color: var(--medium-brown);
+        }
+        
+        /* Laporan Specific Styles */
+        .laporan-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(93, 64, 55, 0.1);
+            padding: 25px;
+            margin-top: 20px;
+            border: 1px solid var(--accent-brown);
+        }
+        
+        .laporan-header {
+            color: var(--dark-brown);
+            border-bottom: 2px solid var(--light-brown);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .table-laporan {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table-laporan thead {
+            background-color: var(--dark-brown);
+            color: white;
+        }
+        
+        .table-laporan th {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        .table-laporan tbody tr {
+            border-bottom: 1px solid var(--accent-brown);
+        }
+        
+        .table-laporan tbody tr:nth-child(even) {
+            background-color: var(--cream);
+        }
+        
+        .table-laporan tbody tr:hover {
+            background-color: var(--accent-brown);
+        }
+        
+        .table-laporan td {
+            padding: 12px 15px;
+        }
+        
+        .laporan-summary {
+            background-color: var(--accent-brown);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .btn-laporan {
+            background-color: var(--medium-brown);
+            color: white;
+            border: none;
+        }
+        
+        .btn-laporan:hover {
+            background-color: var(--dark-brown);
+            color: white;
+        }
+        
+        .filter-section {
+            background-color: var(--accent-brown);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--medium-brown);
+            box-shadow: 0 0 0 0.25rem rgba(141, 110, 99, 0.25);
+        }
+    </style>
 </head>
 
 <body class="bg-light">
@@ -84,24 +217,29 @@ $total_item = array_sum(array_column($_SESSION['keranjang'] ?? [], 'quantity'));
             <?php if (isset($_SESSION["akun-admin"])) { ?>
                 <li><a class="text-decoration-none p-2 h5 text-light" href="index.php?pesanan">PESANAN</a></li><br>
                 <li><a class="text-decoration-none p-2 h5 text-light" href="index.php?transaksi">TRANSAKSI</a></li><br>
-                <li><a class="text-decoration-none p-2 h5 text-light" href="index.php?laporan">LAPORAN</a></li> <!-- Pastikan ini benar -->
+                <li><a class="text-decoration-none p-2 h5 text-light" href="index.php?tambah">TAMBAH</a></li><br>
+                <li><a class="text-decoration-none p-2 h5 text-light" href="index.php?laporan">LAPORAN</a></li>
             <?php } ?>
         </ul>
     </div>
 
     <!-- Content -->
     <div class="container" style="z-index: -1; margin-top: 60px;">
-        <?php
-        if (isset($_GET["pesanan"])) {
-            include "halaman/pesanan.php";
-        } elseif (isset($_GET["transaksi"])) {
-            include "halaman/transaksi.php";
-        } elseif (isset($_GET["laporan"])) { // Tambahkan cek untuk laporan
-            include "halaman/laporan.php"; 
-        } else {
-            include "halaman/beranda.php";
-        }
-        ?>
+    <?php
+if (isset($_GET["pesanan"])) {
+    include "halaman/pesanan.php";
+} elseif (isset($_GET["transaksi"])) {
+    include "halaman/transaksi.php";
+} elseif (isset($_GET["laporan"])) {
+    echo '<div class="laporan-container">';
+    include "halaman/laporan.php"; 
+    echo '</div>';
+} elseif (isset($_GET["tambah"])) {
+    include "halaman/tambah.php";
+} else {
+    include "halaman/beranda.php";
+}
+?>
     </div>
 
     <script src="./src/css/bootstrap-5.2.0/js/bootstrap.min.js"></script>

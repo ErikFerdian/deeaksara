@@ -118,16 +118,76 @@ foreach ($_SESSION['keranjang'] as $item) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keranjang Belanja</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-brown: #5D4037;
+            --light-brown: #8D6E63;
+            --lighter-brown: #BCAAA4;
+            --cream: #EFEBE9;
+            --accent: #D7CCC8;
+        }
+        
+        body {
+            background-color: var(--cream);
+            color: var(--primary-brown);
+        }
+        
+        .navbar-brown {
+            background-color: var(--primary-brown) !important;
+        }
+        
+        .card {
+            background-color: white;
+            border: 1px solid var(--lighter-brown);
+            box-shadow: 0 4px 8px rgba(93, 64, 55, 0.1);
+        }
+        
+        .table thead {
+            background-color: var(--primary-brown);
+            color: white;
+        }
+        
+        .btn-brown {
+            background-color: var(--light-brown);
+            border-color: var(--light-brown);
+            color: white;
+        }
+        
+        .btn-brown:hover {
+            background-color: var(--primary-brown);
+            border-color: var(--primary-brown);
+            color: white;
+        }
+        
+        .btn-success {
+            background-color: #689F38;
+            border-color: #689F38;
+        }
+        
+        .btn-danger {
+            background-color: #D32F2F;
+            border-color: #D32F2F;
+        }
+        
+        .table-hover tbody tr:hover {
+            background-color: var(--accent);
+        }
+        
+        .form-control:focus {
+            border-color: var(--light-brown);
+            box-shadow: 0 0 0 0.25rem rgba(141, 110, 99, 0.25);
+        }
+    </style>
 </head>
 <body>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">🛒 Keranjang</h2>
+    <h2 class="mb-4 text-center" style="color: var(--primary-brown);">🛒 Keranjang</h2>
 
     <div class="card p-3">
         <form method="POST" action="keranjang.php">
-            <table class="table table-bordered text-center">
-                <thead class="table-dark">
+            <table class="table table-bordered text-center table-hover">
+                <thead>
                     <tr>
                         <th>Item</th>
                         <th>Quantity</th>
@@ -142,7 +202,7 @@ foreach ($_SESSION['keranjang'] as $item) {
                             <tr>
                                 <td><?= htmlspecialchars($item['name']); ?></td>
                                 <td>
-                                    <input type="number" name="quantity[<?= $item_id; ?>]" value="<?= $item['quantity']; ?>" min="1" class="form-control w-50">
+                                    <input type="number" name="quantity[<?= $item_id; ?>]" value="<?= $item['quantity']; ?>" min="1" class="form-control w-50 mx-auto">
                                 </td>
                                 <td>Rp <?= number_format($item['price'], 0, ',', '.'); ?></td>
                                 <td>Rp <?= number_format($item['price'] * $item['quantity'], 0, ',', '.'); ?></td>
@@ -151,13 +211,13 @@ foreach ($_SESSION['keranjang'] as $item) {
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-                        <tr class="table-secondary">
+                        <tr style="background-color: var(--accent);">
                             <td colspan="3"><b>Total Harga</b></td>
                             <td colspan="2"><b>Rp <?= number_format($total_harga, 0, ',', '.'); ?></b></td>
                         </tr>
                         <tr>
                             <td colspan="5">
-                                <button type="submit" name="update_cart" class="btn btn-success">🔄 Update Keranjang</button>
+                                <button type="submit" name="update_cart" class="btn btn-brown">🔄 Update Keranjang</button>
                             </td>
                         </tr>
                     <?php else: ?>
@@ -172,18 +232,19 @@ foreach ($_SESSION['keranjang'] as $item) {
 
     <!-- Form Konfirmasi Pembayaran -->
     <?php if (!empty($_SESSION['keranjang'])): ?>
-        <div class="text-center mt-3">
-            <form method="POST">
-                <input type="text" name="nama_pelanggan" class="form-control w-50 me-2 d-inline" placeholder="Nama Pelanggan" required>
-                <button type="submit" name="confirm_payment" class="btn btn-lg btn-success">✅ Pesan</button>
+        <div class="text-center mt-4">
+            <form method="POST" class="d-flex justify-content-center align-items-center">
+                <input type="text" name="nama_pelanggan" class="form-control w-50 me-2" placeholder="Nama Pelanggan" required style="border-color: var(--light-brown);">
+                <button type="submit" name="confirm_payment" class="btn btn-success btn-lg">✅ Pesan</button>
             </form>
         </div>
     <?php endif; ?>
 
-    <div class="text-center mt-3">
-        <a href="index.php" class="btn btn-primary">🏠 Kembali ke Beranda</a>
+    <div class="text-center mt-4">
+        <a href="index.php" class="btn btn-brown">🏠 Kembali ke Beranda</a>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
