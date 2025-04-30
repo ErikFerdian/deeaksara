@@ -28,14 +28,6 @@ Project aplikasi Web Dee Aksara ini kami buat untuk memenuhi tugas dari mata kul
 
 # View Aplikasi
 Login Page
-![alt text](https://github.com/Rii02/Web-Lily-Laundry/blob/main/Login%20Page.png?raw=true)
-Admin Page
-![alt text](https://github.com/Rii02/Web-Lily-Laundry/blob/main/Admin%20Pov%20(Dashboard%20Page)%20(2).png?raw=true)
-Laundry Type Page
-![alt text](https://github.com/Rii02/Web-Lily-Laundry/blob/main/Laundry%20Type%20Page.png?raw=true)
-Add Officer Page
-![alt text](https://github.com/Rii02/Web-Lily-Laundry/blob/main/Add%20Officer%20Page.png?raw=true)
-Report Page
-![alt text](https://github.com/Rii02/Web-Lily-Laundry/blob/main/Report%20Page%202.png?raw=true)
-Kasir Page
-![alt text](https://github.com/Rii02/Web-Lily-Laundry/blob/main/Kasir%20Pov%20(Dashboard%20Page).png?raw=true)
+![LOGIN](https://github.com/user-attachments/assets/18ee9fe9-a22d-4a20-aea6-5d40029f01d2)
+Registrasi Page
+![REGISTRASI](https://github.com/user-attachments/assets/ac531610-75b4-4ab0-a46a-e2d1db8bec2f)
