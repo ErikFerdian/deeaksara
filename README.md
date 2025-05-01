@@ -5,21 +5,21 @@
 # Deskripsi Aplikasi
 Aplikasi Coffee Shop Dee Aksara adalah sistem penjualan kopi berbasis web yang dirancang untuk memudahkan pelanggan dalam melakukan pemesanan dan pembayaran secara online. Dengan memanfaatkan teknologi terkini seperti PHP, serta dukungan framework Boostrap, HTML, dan Java, aplikasi ini menyederhanakan proses transaksi pembayaran, pencatatan pesanan, dan pembuatan laporan. Sistem ini memiliki pengguna utama: 
 - Admin : Bertanggung jawab untuk mengelola menu, menyiapkan pesanan pelanggan, transaksi pembayaran dan membuat laporan.
-- User  : Melakukan pemesanan (mengedit, menghapus pesanan setelah di masukan keranjang).
+- User  : Melakukan pemesanan (menambah, mengedit, menghapus pesanan setelah di masukan keranjang).
   
 # Fungsi Aplikasi
 Web Dee Aksara ini berfungsi untuk mempermudah mengelola operasional coffeeshop dengan dilengkapi fitur:
-1. Manajemen Pelanggan: Menambahkan menu ke dalam keranjang dan melakukan pemesanan
-2. Manajemen Admin: Tambah, edit, hapus Menu dan mengelola pesana yang masuk.
-3. Transaksi: Mengelola terkait transaksi (bayar, edit, hapus, dan cetak)
+1. Manajemen Pelanggan: Menambahkan menu ke dalam keranjang dan melakukan pemesanan.
+2. Manajemen Admin: Tambah, edit, hapus menu dan mengelola pesanan yang masuk.
+3. Transaksi: Mengelola terkait transaksi (bayar, edit, hapus, dan cetak).
 4. Laporan: Menghasilkan laporan keseluruhan atau spesifik terkait transaksi.
    
 # Tujuan Aplikasi
 Tujuan pembuatan aplikasi Dee Aksara sebagai berikut: 
-1. Membantu pelanggan dalam pemesanan produk coffee shop secara lebih tepat dan praktis
-2. Memudahkan admin dalam mengelola menu dan transaksi penjualan
-3. Meningkatkan kepuasan pelanggan dengan pelanggan dan layaanan berbasis teknologi
-4. Memudahkan dengan adanya pembayaran non tunai seperti Qris 
+1. Membantu pelanggan dalam pemesanan produk coffee shop secara lebih tepat dan praktis.
+2. Memudahkan admin dalam mengelola menu dan transaksi penjualan.
+3. Meningkatkan kepuasan pelanggan dengan pelanggan dan layaanan berbasis teknologi.
+4. Memudahkan dengan adanya pembayaran non tunai seperti Qris. 
 
 # Profile Developer
 1. Achmad Amirul A            (23050974004)
