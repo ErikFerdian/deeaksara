@@ -32,19 +32,21 @@ Project aplikasi Web Dee Aksara ini kami buat untuk memenuhi tugas dari mata kul
 # View Aplikasi
 Login Page
 ![LOGIN](https://github.com/user-attachments/assets/18ee9fe9-a22d-4a20-aea6-5d40029f01d2)
-Registrasi Page
+Registration Page
 ![REGISTRASI](https://github.com/user-attachments/assets/ac531610-75b4-4ab0-a46a-e2d1db8bec2f)
-Menu Page
-![FORM MENU (ADMIN DAN USER)](https://github.com/user-attachments/assets/6c31374b-6163-401d-9ad3-cda70d4dd506)
-Keranjang Page
+User Menu Page
+![FORM MENU (USER)](https://github.com/user-attachments/assets/b5393225-6062-4015-bbe1-6d7d98874c11)
+Admin Menu Page
+![FORM MENU (ADMIN)](https://github.com/user-attachments/assets/ecbd2fff-935d-446d-af86-1ec48459a2f9)
+Cart Page
 ![FORM KERANJANG (ADMIN)](https://github.com/user-attachments/assets/ace4ed21-a8b0-462e-b1fa-97b9f6e4b02c)
-Pesanan Page
+Order Page
 ![FORM PESANAN (ADMIN)](https://github.com/user-attachments/assets/59b39da3-b35d-46ea-ad47-99c5c95ced57)
-Transaksi Page
+Transaction Page
 ![FORM TRANSAKSI (ADMIN)](https://github.com/user-attachments/assets/9a811455-4d6b-454f-92c4-0f62b445c6f4)
-Tambah Menu Page
+Add Menu Page
 ![FORM TAMBAH MENU (ADMIN)](https://github.com/user-attachments/assets/5f650f8e-1cf8-479c-8624-580ad115efcf)
-Laporan Page
+Report Page
 ![FORM LAPORAN (ADMIN)](https://github.com/user-attachments/assets/477e50e6-e8d9-4fa5-bcdb-6f3025728377)
 
 
