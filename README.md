@@ -1,6 +1,6 @@
 # Coffee Shop Dee Aksara 
 # Poster
-![WhatsApp Image 2025-04-30 at 16 31 55_ecc4b515](https://github.com/user-attachments/assets/7d709920-444c-4c81-b443-35a242d6cc7f)
+![Poster Aplikasi CoffeeShop](https://github.com/user-attachments/assets/25992bf8-3232-47f5-a95a-8f1731334de9)
 
 # Deskripsi Aplikasi
 Aplikasi Coffee Shop Dee Aksara adalah sistem penjualan kopi berbasis web yang dirancang untuk memudahkan pelanggan dalam melakukan pemesanan dan pembayaran secara online. Dengan memanfaatkan teknologi terkini seperti PHP, serta dukungan framework Boostrap, HTML, dan Java, aplikasi ini menyederhanakan proses transaksi pembayaran, pencatatan pesanan, pembuatan laporan, dan kelola akun petugas. Sistem ini memiliki pengguna utama: 
@@ -37,19 +37,21 @@ Login Page
 Registration Page
 ![REGISTRASI](https://github.com/user-attachments/assets/ac531610-75b4-4ab0-a46a-e2d1db8bec2f)
 User Menu Page
-![FORM MENU (USER)](https://github.com/user-attachments/assets/b5393225-6062-4015-bbe1-6d7d98874c11)
-Admin Menu Page
-![FORM MENU (ADMIN)](https://github.com/user-attachments/assets/ecbd2fff-935d-446d-af86-1ec48459a2f9)
+![Form Menu (User) (1)](https://github.com/user-attachments/assets/b447e1c2-dc1f-418d-a8a6-d762cf1d95e5)
 Cart Page
-![FORM KERANJANG (ADMIN)](https://github.com/user-attachments/assets/ace4ed21-a8b0-462e-b1fa-97b9f6e4b02c)
+![Form Keranjang](https://github.com/user-attachments/assets/79bbe38f-07a3-424e-976c-0fb421674999)
+Admin & Owner Menu Page
+![Form Menu (Admin   Owner)](https://github.com/user-attachments/assets/288a30f7-11ed-4c00-8dcd-1e23da7c5b12)
 Order Page
-![FORM PESANAN (ADMIN)](https://github.com/user-attachments/assets/59b39da3-b35d-46ea-ad47-99c5c95ced57)
+![Form Pesanan (Admin   Owner)](https://github.com/user-attachments/assets/21740e90-5b73-4231-85d7-d63cd087bdc3)
 Transaction Page
-![FORM TRANSAKSI (ADMIN)](https://github.com/user-attachments/assets/9a811455-4d6b-454f-92c4-0f62b445c6f4)
+![Form Transaksi (Admin   Owner)](https://github.com/user-attachments/assets/aa0aa896-7e05-4bf1-ba05-77e38453f77d)
 Add Menu Page
-![FORM TAMBAH MENU (ADMIN)](https://github.com/user-attachments/assets/5f650f8e-1cf8-479c-8624-580ad115efcf)
+![Form Tambah Menu (Admin   Owner)](https://github.com/user-attachments/assets/35409062-b8e3-4df3-a30b-256779ab3ef4)
 Report Page
-![FORM LAPORAN (ADMIN)](https://github.com/user-attachments/assets/477e50e6-e8d9-4fa5-bcdb-6f3025728377)
+![Form Laporan (Admin   Owner)](https://github.com/user-attachments/assets/d2110d49-89e7-40eb-9dd2-f122ca0876ca)
+Manage Account Page
+![Form Kelola Akun (Owner)](https://github.com/user-attachments/assets/66e59712-af9f-4d75-b676-739f6cb1c780)
 
 
 
